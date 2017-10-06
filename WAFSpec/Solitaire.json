@@ -1,0 +1,9 @@
+{
+    "description": "Configuration for Solitaire",
+    "visual_studio_name": "Solitaire",
+    "comment" : "",
+    "game_projects" : "Solitaire",
+
+    "modules" : [
+    ]
+}

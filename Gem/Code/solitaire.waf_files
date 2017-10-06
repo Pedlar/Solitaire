@@ -1,0 +1,18 @@
+{
+    "none": {
+        "Source": [
+            "Source/StdAfx.cpp",
+            "Source/StdAfx.h"
+        ]
+    },
+    "auto": {
+        "Include": [
+            "Include/Solitaire/SolitaireBus.h"
+        ],
+        "Source": [
+            "Source/SolitaireModule.cpp",
+            "Source/SolitaireSystemComponent.cpp",
+            "Source/SolitaireSystemComponent.h"
+        ]
+    }
+}
