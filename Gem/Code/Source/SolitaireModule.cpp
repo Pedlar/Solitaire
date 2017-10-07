@@ -5,6 +5,9 @@
 #include <AzCore/Memory/SystemAllocator.h>
 
 #include "SolitaireSystemComponent.h"
+#include "Components\DeckComponent.h"
+#include "Components\MouseInputComponent.h"
+#include "Components\CardSpawnerComponent.h"
 
 #include <IGem.h>
 
@@ -23,6 +26,9 @@ namespace Solitaire
             // Push results of [MyComponent]::CreateDescriptor() into m_descriptors here.
             m_descriptors.insert(m_descriptors.end(), {
                 SolitaireSystemComponent::CreateDescriptor(),
+                DeckComponent::CreateDescriptor(),
+                MouseInputComponent::CreateDescriptor(),
+                CardSpawnerComponent::CreateDescriptor()
             });
         }
 

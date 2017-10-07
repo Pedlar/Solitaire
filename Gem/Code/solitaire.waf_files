@@ -7,12 +7,22 @@
     },
     "auto": {
         "Include": [
-            "Include/Solitaire/SolitaireBus.h"
+            "Include/Solitaire/SolitaireBus.h",
+			"Include/Solitaire/MouseHitEventBus.h",
+			"Include/Solitaire/CardSpawnerBus.h"
         ],
         "Source": [
             "Source/SolitaireModule.cpp",
             "Source/SolitaireSystemComponent.cpp",
             "Source/SolitaireSystemComponent.h"
+        ],
+		"Source/Components": [
+            "Source/Components/DeckComponent.cpp",
+            "Source/Components/DeckComponent.h",
+            "Source/Components/MouseInputComponent.cpp",
+			"Source/Components/MouseInputCompoonent.h",
+			"Source/Components/CardSpawnerComponent.cpp",
+			"Source/Components/CardSpawnerComponent.h"
         ]
     }
 }
