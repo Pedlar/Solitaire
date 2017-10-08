@@ -21,6 +21,12 @@ namespace Solitaire
         static void GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& required);
         static void GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& dependent);
 
+        AZStd::vector<Card> GetDeck();
+        Card GetCardAtPosition(int position);
+        Card GetCardAtCurrentPosition();
+        Card GetNextCard();
+        void ResetDeckPosition();
+        void ShuffleDeck();
     protected:
         ////////////////////////////////////////////////////////////////////////
         // SolitaireRequestBus interface implementation
@@ -33,5 +39,9 @@ namespace Solitaire
         void Activate() override;
         void Deactivate() override;
         ////////////////////////////////////////////////////////////////////////
+
+
+    private:
+        DeckFramework mDeckFramework;
     };
 }

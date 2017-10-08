@@ -1,8 +1,10 @@
 #include "StdAfx.h"
 #include "DeckComponent.h"
+#include "CardSpawnerComponent.h"
 #include "AzCore\Serialization\EditContext.h"
 #include "AzCore\Math\Transform.h"
 #include "AzCore\Component\TransformBus.h"
+#include "Solitaire\SolitaireBus.h"
 
 using namespace Solitaire;
 
@@ -39,7 +41,15 @@ void DeckComponent::Deactivate() {
 }
 
 void DeckComponent::OnMouseHit() {
+
+    Card card;
+    EBUS_EVENT_RESULT(card, SolitaireRequestBus, GetNextCard);
+
     CryLogAlways("DeskComponent: I've Been Clicked On!");
+
+    CryLogAlways("Card At Position 2 is: %s %d", CardType::ToString(card.GetSuit()), card.GetValue());
+
+    EBUS_EVENT_ID(SpawnEntityId, CardSpawnerRequestBus, SpawnCard, card);
 
     AZ::Transform myTransform = AZ::Transform::CreateIdentity();
     EBUS_EVENT_ID_RESULT(myTransform, GetEntityId(), AZ::TransformBus, GetWorldTM);

@@ -1,6 +1,7 @@
 #pragma once
 #include "AzCore\Component\Component.h"
 #include "AzCore\EBus\EBus.h"
+#include "Card\CardModel.h"
 
 namespace Solitaire {
     class CardSpawnerRequests
@@ -12,7 +13,7 @@ namespace Solitaire {
 
         typedef AZ::EntityId BusIdType;
 
-        virtual void SpawnCard(int cardValue) = 0;
+        virtual void SpawnCard(Card card) = 0;
     };
 
     using CardSpawnerRequestBus = AZ::EBus<CardSpawnerRequests>;

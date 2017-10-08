@@ -1,14 +1,19 @@
 #pragma once
+#include <AzCore\std\containers\map.h>
 #include "AzCore\Component\Component.h"
+#include <AzFramework/Entity/EntityContextBus.h>
+#include <AzCore\Slice\SliceAsset.h>
+
 #include "Solitaire\CardSpawnerBus.h"
 
 namespace Solitaire {
     class CardSpawnerComponent
         : public AZ::Component,
-          public CardSpawnerRequestBus::Handler {
+          public CardSpawnerRequestBus::Handler,
+          private AzFramework::SliceInstantiationResultBus::MultiHandler {
     public:
-        AZ_COMPONENT(CardSpawnerComponent, "{  }")
-
+        AZ_COMPONENT(CardSpawnerComponent, "{689c426a-ab50-11e7-abc4-cec278b6b50a}")
+        CardSpawnerComponent();
         ~CardSpawnerComponent() override {};
 
         static void Reflect(AZ::ReflectContext* reflection);
@@ -17,6 +22,15 @@ namespace Solitaire {
         void Activate() override;
         void Deactivate() override;
 
-        void SpawnCard(int cardValue) override;
+        void SpawnCard(Card card) override;
+
+        // SliceInstantiationResultBus::MultiHandler
+        void OnSlicePreInstantiate(const AZ::Data::AssetId& sliceAssetId, const AZ::SliceComponent::SliceInstanceAddress& sliceAddress) override;
+        void OnSliceInstantiated(const AZ::Data::AssetId& sliceAssetId, const AZ::SliceComponent::SliceInstanceAddress& sliceAddress) override;
+        void OnSliceInstantiationFailed(const AZ::Data::AssetId& sliceAssetId) override;
+    private:
+        
+        AZ::Data::Asset<AZ::DynamicSliceAsset> sliceAsset;
+        AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator> ticketCardMap = AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator>();
     };
 }
