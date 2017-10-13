@@ -5,11 +5,11 @@
 #include <AzCore\RTTI\BehaviorContext.h>
 
 namespace Solitaire {
-    CardType::Suit Card::GetSuit() {
+    CardType::Suit Card::GetSuit() const {
         return cardSuit;
     }
 
-    int Card::GetValue() {
+    int Card::GetValue() const {
         return value;
     }
 }

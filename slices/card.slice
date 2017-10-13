@@ -1,9 +1,9 @@
 <ObjectStream version="2">
 	<Class name="AZ::Entity" type="{75651658-8663-478D-9090-2432DFCAFA44}" version="2" specializationTypeId="{75651658-8663-478D-9090-2432DFCAFA44}">
 		<Class name="EntityId" field="Id" type="{6383F1D3-BB27-4E6B-A49A-6409B2059EAA}" version="1" specializationTypeId="{6383F1D3-BB27-4E6B-A49A-6409B2059EAA}">
-			<Class name="AZ::u64" field="id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="385730013789" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+			<Class name="AZ::u64" field="id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="446755324748" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 		</Class>
-		<Class name="AZStd::string" field="Name" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="385730013789" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
+		<Class name="AZStd::string" field="Name" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="446755324748" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
 		<Class name="bool" field="IsDependencyReady" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="false" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
 		<Class name="bool" field="IsRuntimeActive" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
 		<Class name="AZStd::vector" field="Components" type="{2BADE35A-6F1B-4698-B2BC-3373D010020C}" specializationTypeId="{0D23B755-6E8F-5C6C-B7C9-A352A55DC1DF}">
@@ -140,7 +140,7 @@
 									<Class name="AZ::u64" field="id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="215597676640" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 								</Class>
 								<Class name="EditorTransform" field="Transform Data" type="{B02B7063-D238-4F40-A724-405F7A6D68CB}" version="1" specializationTypeId="{B02B7063-D238-4F40-A724-405F7A6D68CB}">
-									<Class name="Vector3" field="Translate" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="-21.9999924 -2.0000000 0.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
+									<Class name="Vector3" field="Translate" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="0.0000000 0.0000000 0.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
 									<Class name="Vector3" field="Rotate" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="0.0000000 0.0000000 0.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
 									<Class name="Vector3" field="Scale" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="1.0000000 1.0000000 1.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
 								</Class>
@@ -192,7 +192,7 @@
 									<Class name="Asset" field="Static Mesh" type="{77A19D40-8731-4D3C-9041-1B43047366A4}" value="id={FB3C22BD-7EE8-5B4C-A7EF-4DBF2D60FD47}:bd6053c4,type={C2869E3B-DDA0-4E01-8FE3-6770D788866B},hint={objects/card_model.cgf}" version="1" specializationTypeId="{0D76876B-1531-5036-A7D1-DB0A80CCCE5D}"/>
 									<Class name="AzFramework::SimpleAssetReference&lt;LmbrCentral::MaterialAsset&gt;" field="Material Override" type="{B7B8ECC7-FF89-4A76-A50E-4C6CA2B6E6B4}" version="1" specializationTypeId="{B7B8ECC7-FF89-4A76-A50E-4C6CA2B6E6B4}">
 										<Class name="SimpleAssetReferenceBase" field="BaseClass1" type="{E16CA6C5-5C78-4AD9-8E9B-F8C1FB4D1DB8}" version="1" specializationTypeId="{E16CA6C5-5C78-4AD9-8E9B-F8C1FB4D1DB8}">
-											<Class name="AZStd::string" field="AssetPath" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="editor/materials/areasolid.mtl" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
+											<Class name="AZStd::string" field="AssetPath" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="materials/cardfront.mtl" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
 										</Class>
 									</Class>
 									<Class name="MeshRenderOptions" field="Render Options" type="{EFF77BEB-CB99-44A3-8F15-111B0200F50D}" version="4" specializationTypeId="{EFF77BEB-CB99-44A3-8F15-111B0200F50D}">

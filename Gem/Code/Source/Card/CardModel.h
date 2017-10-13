@@ -16,8 +16,8 @@ namespace Solitaire {
         Card() = default;
         ~Card() = default;
 
-        CardType::Suit GetSuit();
-        int GetValue();
+        CardType::Suit GetSuit() const;
+        int GetValue() const;
 
         int value;
         CardType::Suit cardSuit;

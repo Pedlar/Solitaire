@@ -22,7 +22,7 @@ namespace Solitaire {
         void Activate() override;
         void Deactivate() override;
 
-        void SpawnCard(Card card) override;
+        void SpawnCard(const Card& card) override;
 
         // SliceInstantiationResultBus::MultiHandler
         void OnSlicePreInstantiate(const AZ::Data::AssetId& sliceAssetId, const AZ::SliceComponent::SliceInstanceAddress& sliceAddress) override;
@@ -32,5 +32,10 @@ namespace Solitaire {
         
         AZ::Data::Asset<AZ::DynamicSliceAsset> sliceAsset;
         AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator> ticketCardMap = AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator>();
+    
+        void SetSubMtlOfCard(const AZ::SliceComponent::EntityList & entites, Card card);
+        void SetSubMtlOfEntityForCard(AZ::Entity *, Card card);
+        int GetMtlPosition(Card card);
+        AZ::Transform GetSpawnTransform();
     };
 }

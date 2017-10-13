@@ -13,7 +13,7 @@ namespace Solitaire {
 
         typedef AZ::EntityId BusIdType;
 
-        virtual void SpawnCard(Card card) = 0;
+        virtual void SpawnCard(const Card& card) = 0;
     };
 
     using CardSpawnerRequestBus = AZ::EBus<CardSpawnerRequests>;
