@@ -30,7 +30,7 @@
             "Source/Components/DeckComponent.cpp",
             "Source/Components/DeckComponent.h",
             "Source/Components/MouseInputComponent.cpp",
-			"Source/Components/MouseInputCompoonent.h",
+			"Source/Components/MouseInputComponent.h",
 			"Source/Components/CardSpawnerComponent.cpp",
 			"Source/Components/CardSpawnerComponent.h"
         ]
