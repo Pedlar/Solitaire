@@ -35,6 +35,7 @@ namespace Solitaire {
     private:
         bool ShouldCheckRayCastHit = false;
         AZ::Vector2 LastClickedMousePosition = AZ::Vector2::CreateZero();
+        AZ::EntityId LastHitEntityId;
 
         void PerformRayCastCheck();
     };

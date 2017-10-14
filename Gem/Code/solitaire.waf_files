@@ -19,7 +19,9 @@
         ],
 		"Source/Card": [
 		    "Source/Card/CardModel.cpp",
-			"Source/Card/CardModel.h"
+			"Source/Card/CardModel.h",
+			"Source/Card/CardComponent.cpp",
+			"Source/Card/CardComponent.h"
 		],
 		"Source/Deck": [
 		    "Source/Deck/DeckFramework.cpp",

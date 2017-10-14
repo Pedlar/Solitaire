@@ -1,16 +1,16 @@
 #pragma once
 #include "AzCore\Component\Component.h"
-
 #include "Solitaire\MouseHitEventBus.h"
 
+
 namespace Solitaire {
-    class DeckComponent
+    class CardComponent
         : public AZ::Component,
           public MouseHitEventsBus::Handler {
     public:
-        AZ_COMPONENT(DeckComponent, "{75508bc2-aafd-11e7-abc4-cec278b6b50a}")
+        AZ_COMPONENT(CardComponent, "{af8cc084-b0fd-11e7-abc4-cec278b6b50a}")
 
-        ~DeckComponent() override {};
+        ~CardComponent() override {};
 
         static void Reflect(AZ::ReflectContext* reflection);
 
@@ -19,10 +19,7 @@ namespace Solitaire {
         void Deactivate() override;
 
         void OnMouseHit(MouseHitEvents::MouseData mouseData);
-
-        inline void OnMouseHeld(MouseHitEvents::MouseData mouseData) {};
-        inline void OnMouseEnd(MouseHitEvents::MouseData mouseData) {};
-    private:
-        AZ::EntityId SpawnEntityId;
+        void OnMouseHeld(MouseHitEvents::MouseData mouseData);
+        void OnMouseEnd(MouseHitEvents::MouseData mouseData);
     };
 }

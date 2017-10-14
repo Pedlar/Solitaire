@@ -33,14 +33,14 @@ void DeckComponent::Activate() {
         SpawnEntityId = GetEntityId();
     }
 
-    MouseHitEvents::Handler::BusConnect(GetEntityId());
+    MouseHitEventsBus::Handler::BusConnect(GetEntityId());
 }
 
 void DeckComponent::Deactivate() {
-    MouseHitEvents::Handler::BusDisconnect();
+    MouseHitEventsBus::Handler::BusDisconnect();
 }
 
-void DeckComponent::OnMouseHit() {
+void DeckComponent::OnMouseHit(MouseHitEvents::MouseData mouseData) {
 
     Card card;
     EBUS_EVENT_RESULT(card, SolitaireRequestBus, GetNextCard);

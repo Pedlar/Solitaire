@@ -8,6 +8,7 @@
 #include "Components\DeckComponent.h"
 #include "Components\MouseInputComponent.h"
 #include "Components\CardSpawnerComponent.h"
+#include "Card\CardComponent.h"
 
 #include <IGem.h>
 
@@ -28,7 +29,8 @@ namespace Solitaire
                 SolitaireSystemComponent::CreateDescriptor(),
                 DeckComponent::CreateDescriptor(),
                 MouseInputComponent::CreateDescriptor(),
-                CardSpawnerComponent::CreateDescriptor()
+                CardSpawnerComponent::CreateDescriptor(),
+                CardComponent::CreateDescriptor()
             });
         }
 

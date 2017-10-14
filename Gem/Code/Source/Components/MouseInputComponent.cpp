@@ -56,7 +56,7 @@ void MouseInputComponent::OnScene3DEnd() {
 }
 
 void MouseInputComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
-    MouseHitEvents::ExecuteQueuedEvents();
+    MouseHitEventsBus::ExecuteQueuedEvents();
 }
 
 bool MouseInputComponent::OnInputChannelEventFiltered(const AzFramework::InputChannel& inputChannel) {
@@ -65,19 +65,29 @@ bool MouseInputComponent::OnInputChannelEventFiltered(const AzFramework::InputCh
     if (deviceId == AzFramework::InputDeviceMouse::Id) {
         if (inputChannel.GetInputChannelId() == AzFramework::InputDeviceMouse::Button::Left) {
             AzFramework::InputChannel::State buttonState = inputChannel.GetState();
+
+            const AzFramework::InputChannel::PositionData2D* positionData = inputChannel.GetCustomData<AzFramework::InputChannel::PositionData2D>();
+            AZ::Vector2 mouseVector2 = positionData->m_normalizedPosition;
+            float xMouse = mouseVector2.GetX() * gEnv->pRenderer->GetWidth();
+            float yMouse = mouseVector2.GetY() * gEnv->pRenderer->GetHeight();
+
+            LastClickedMousePosition = AZ::Vector2(xMouse, yMouse);
+
             switch (buttonState) {
             case AzFramework::InputChannel::State::Began:
-                const AzFramework::InputChannel::PositionData2D* positionData = inputChannel.GetCustomData<AzFramework::InputChannel::PositionData2D>();
-
-                AZ::Vector2 mouseVector2 = positionData->m_normalizedPosition;
-
-                float xMouse = mouseVector2.GetX() * gEnv->pRenderer->GetWidth();
-                float yMouse = mouseVector2.GetY() * gEnv->pRenderer->GetHeight();
-
-                float invMouseY = static_cast<float>(gEnv->pRenderer->GetHeight()) - yMouse;
-
-                LastClickedMousePosition = AZ::Vector2{ xMouse, invMouseY };
                 ShouldCheckRayCastHit = true;
+                break;
+
+            case AzFramework::InputChannel::State::Updated:
+                if (LastHitEntityId.IsValid()) {
+                    EBUS_QUEUE_EVENT_ID(LastHitEntityId, MouseHitEventsBus, OnMouseHeld, MouseHitEvents::MouseData(LastClickedMousePosition));
+                }
+                break;
+            case AzFramework::InputChannel::State::Ended:
+                if (LastHitEntityId.IsValid()) {
+                    EBUS_QUEUE_EVENT_ID(LastHitEntityId, MouseHitEventsBus, OnMouseEnd, MouseHitEvents::MouseData(LastClickedMousePosition));
+                    LastHitEntityId.SetInvalid();
+                }
                 break;
             }
         }
@@ -88,7 +98,9 @@ bool MouseInputComponent::OnInputChannelEventFiltered(const AzFramework::InputCh
 
 void MouseInputComponent::PerformRayCastCheck() {
     float xMouse = LastClickedMousePosition.GetX();
-    float invMouseY = LastClickedMousePosition.GetY();
+    float yMouse = LastClickedMousePosition.GetY();
+
+    float invMouseY = static_cast<float>(gEnv->pRenderer->GetHeight()) - yMouse;
 
     Vec3 vPos0(0, 0, 0);
     gEnv->pRenderer->UnProjectFromScreen(xMouse, invMouseY, 0, &vPos0.x, &vPos0.y, &vPos0.z);
@@ -119,7 +131,8 @@ void MouseInputComponent::PerformRayCastCheck() {
     if (result.GetHitCount() > 0) {
         auto hit = result.GetHit(0);
         if (hit->IsValid()) {
-            EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEvents, OnMouseHit);
+            LastHitEntityId = hit->m_entityId;
+            EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEventsBus, OnMouseHit, MouseHitEvents::MouseData(LastClickedMousePosition));
         }
     }
 
