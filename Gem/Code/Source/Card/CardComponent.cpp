@@ -25,24 +25,48 @@ void CardComponent::Init() {
 }
 
 void CardComponent::Activate() {
+    AZ::TickBus::Handler::BusConnect();
     MouseHitEventsBus::Handler::BusConnect(GetEntityId());
 }
 
 void CardComponent::Deactivate() {
     MouseHitEventsBus::Handler::BusDisconnect();
+    AZ::TickBus::Handler::BusDisconnect();
+}
+
+void CardComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
+    if (!lastMousePosition.IsZero()) {
+        AZ::Transform transform = AZ::Transform::Identity();
+        EBUS_EVENT_ID_RESULT(transform, GetEntityId(), AZ::TransformBus, GetWorldTM);
+
+        if (transform != AZ::Transform::Identity()) {
+            AZ::Vector3 transformPosition = transform.GetPosition();
+
+            AZ::Vector3 mouseDiff = (transformPosition - lastMousePosition);
+
+            AZ::Vector3 newPosition = transform.GetPosition() - mouseDiff;
+
+            CryLogAlways("New Position {%f, %f, %f}, Old Position {%f, %f, %f}", (float)newPosition.GetX(), (float)newPosition.GetY(), (float)newPosition.GetZ(), (float)transform.GetPosition().GetX(), (float)transform.GetPosition().GetY(), (float)transform.GetPosition().GetZ());
+
+            transform.SetPosition(newPosition);
+            EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetWorldTM, transform);
+        }
+    }
 }
 
 void CardComponent::OnMouseHit(MouseHitEvents::MouseData mouseData) {
-    CryLogAlways("OnMouseHit: %f %f", mouseData.GetPosition().GetX(), mouseData.GetPosition().GetY());
+
 }
 
 
 void CardComponent::OnMouseHeld(MouseHitEvents::MouseData mouseData) {
-    CryLogAlways("OnMouseHeld: %f %f", mouseData.GetPosition().GetX(), mouseData.GetPosition().GetY());
-
+    TrackMouseMovement(mouseData.GetLastPosition());
 }
 
 void CardComponent::OnMouseEnd(MouseHitEvents::MouseData mouseData) {
-    CryLogAlways("OnMouseEnd: %f %f", mouseData.GetPosition().GetX(), mouseData.GetPosition().GetY());
+    lastMousePosition = AZ::Vector3::CreateZero();
+}
 
+void CardComponent::TrackMouseMovement(AZ::Vector3 position) {
+    lastMousePosition = position;
 }

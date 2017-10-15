@@ -12,14 +12,20 @@ namespace Solitaire {
             AZ_TYPE_INFO(MouseData, "{af8cb850-b0fd-11e7-abc4-cec278b6b50a}");
             AZ_CLASS_ALLOCATOR(MouseData, AZ::SystemAllocator, 0);
 
-            MouseData(AZ::Vector2 mousePosition) :
-                mousePosition(mousePosition) { };
+            MouseData(AZ::Vector2 mousePosition, AZ::Vector3 lastPosition) :
+                mousePosition(mousePosition),
+                lastPosition(lastPosition) { };
 
             inline AZ::Vector2 GetPosition() {
                 return mousePosition;
             };
 
+            inline AZ::Vector3 GetLastPosition() {
+                return lastPosition;
+            };
+
         private:
+            AZ::Vector3 lastPosition;
             AZ::Vector2 mousePosition;
         };
 

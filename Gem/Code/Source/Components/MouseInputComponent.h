@@ -34,8 +34,10 @@ namespace Solitaire {
         void OnScene3DEnd();
     private:
         bool ShouldCheckRayCastHit = false;
+        bool ShouldBroadcastHit = false;
         AZ::Vector2 LastClickedMousePosition = AZ::Vector2::CreateZero();
-        AZ::EntityId LastHitEntityId;
+        AZ::EntityId ClickedOnEntityId;
+        AZ::Vector3 LastHitPosition;
 
         void PerformRayCastCheck();
     };

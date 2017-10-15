@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 
-#include <IRenderer.h>
-#include <IGameFramework.h>
+#include "MouseConversion.h"
 
 #include "MouseInputComponent.h"
 #include "AzCore\Serialization\EditContext.h"
@@ -67,26 +66,25 @@ bool MouseInputComponent::OnInputChannelEventFiltered(const AzFramework::InputCh
             AzFramework::InputChannel::State buttonState = inputChannel.GetState();
 
             const AzFramework::InputChannel::PositionData2D* positionData = inputChannel.GetCustomData<AzFramework::InputChannel::PositionData2D>();
-            AZ::Vector2 mouseVector2 = positionData->m_normalizedPosition;
-            float xMouse = mouseVector2.GetX() * gEnv->pRenderer->GetWidth();
-            float yMouse = mouseVector2.GetY() * gEnv->pRenderer->GetHeight();
-
-            LastClickedMousePosition = AZ::Vector2(xMouse, yMouse);
+            LastClickedMousePosition = positionData->m_normalizedPosition;
 
             switch (buttonState) {
             case AzFramework::InputChannel::State::Began:
+                ShouldBroadcastHit = true;
                 ShouldCheckRayCastHit = true;
                 break;
 
             case AzFramework::InputChannel::State::Updated:
-                if (LastHitEntityId.IsValid()) {
-                    EBUS_QUEUE_EVENT_ID(LastHitEntityId, MouseHitEventsBus, OnMouseHeld, MouseHitEvents::MouseData(LastClickedMousePosition));
+                if (ClickedOnEntityId.IsValid()) {
+                    ShouldBroadcastHit = false;
+                    ShouldCheckRayCastHit = true;
+                    EBUS_QUEUE_EVENT_ID(ClickedOnEntityId, MouseHitEventsBus, OnMouseHeld, MouseHitEvents::MouseData(LastClickedMousePosition, LastHitPosition));
                 }
                 break;
             case AzFramework::InputChannel::State::Ended:
-                if (LastHitEntityId.IsValid()) {
-                    EBUS_QUEUE_EVENT_ID(LastHitEntityId, MouseHitEventsBus, OnMouseEnd, MouseHitEvents::MouseData(LastClickedMousePosition));
-                    LastHitEntityId.SetInvalid();
+                if (ClickedOnEntityId.IsValid()) {
+                    EBUS_QUEUE_EVENT_ID(ClickedOnEntityId, MouseHitEventsBus, OnMouseEnd, MouseHitEvents::MouseData(LastClickedMousePosition, LastHitPosition));
+                    ClickedOnEntityId.SetInvalid();
                 }
                 break;
             }
@@ -97,8 +95,9 @@ bool MouseInputComponent::OnInputChannelEventFiltered(const AzFramework::InputCh
 }
 
 void MouseInputComponent::PerformRayCastCheck() {
-    float xMouse = LastClickedMousePosition.GetX();
-    float yMouse = LastClickedMousePosition.GetY();
+    AZ::Vector2 mouseVector2 = AZMousePositionToLYMousePosition(LastClickedMousePosition);
+    float xMouse = mouseVector2.GetX();
+    float yMouse = mouseVector2.GetY();
 
     float invMouseY = static_cast<float>(gEnv->pRenderer->GetHeight()) - yMouse;
 
@@ -120,10 +119,7 @@ void MouseInputComponent::PerformRayCastCheck() {
     config.m_direction = LYVec3ToAZVec3(vDir);
     config.m_maxHits = 1;
     config.m_maxDistance = maxDistance;
-    config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::Living 
-        | LmbrCentral::PhysicalEntityTypes::Dynamic 
-        | LmbrCentral::PhysicalEntityTypes::Independent
-        | LmbrCentral::PhysicalEntityTypes::Static;
+    config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::All;
 
     LmbrCentral::PhysicsSystemRequests::RayCastResult result;
     EBUS_EVENT_RESULT(result, LmbrCentral::PhysicsSystemRequestBus, RayCast, config);
@@ -131,8 +127,15 @@ void MouseInputComponent::PerformRayCastCheck() {
     if (result.GetHitCount() > 0) {
         auto hit = result.GetHit(0);
         if (hit->IsValid()) {
-            LastHitEntityId = hit->m_entityId;
-            EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEventsBus, OnMouseHit, MouseHitEvents::MouseData(LastClickedMousePosition));
+            if (!ClickedOnEntityId.IsValid()) {
+                ClickedOnEntityId = hit->m_entityId;
+            }
+
+            LastHitPosition = hit->m_position;
+
+            if (ShouldBroadcastHit) {
+                EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEventsBus, OnMouseHit, MouseHitEvents::MouseData(LastClickedMousePosition, LastHitPosition));
+            }
         }
     }
 
