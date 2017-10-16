@@ -1,5 +1,7 @@
 #include "StdAfx.h"
 
+#include <AzCore\std\containers\vector.h>
+
 #include "MouseConversion.h"
 
 #include "MouseInputComponent.h"
@@ -120,6 +122,10 @@ void MouseInputComponent::PerformRayCastCheck() {
     config.m_maxHits = 1;
     config.m_maxDistance = maxDistance;
     config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::All;
+
+    if (ClickedOnEntityId.IsValid()) {
+        config.m_ignoreEntityIds = AZStd::initializer_list<AZ::EntityId>({ ClickedOnEntityId });
+    }
 
     LmbrCentral::PhysicsSystemRequests::RayCastResult result;
     EBUS_EVENT_RESULT(result, LmbrCentral::PhysicsSystemRequestBus, RayCast, config);
