@@ -35,20 +35,20 @@ void CardComponent::Deactivate() {
 }
 
 void CardComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
+    AZ::Vector3 newPosition = AZ::Vector3::CreateZero();
+
+    AZ::Transform transform = AZ::Transform::Identity();
+    EBUS_EVENT_ID_RESULT(transform, GetEntityId(), AZ::TransformBus, GetWorldTM);
+
     if (!lastMousePosition.IsZero()) {
-        AZ::Transform transform = AZ::Transform::Identity();
-        EBUS_EVENT_ID_RESULT(transform, GetEntityId(), AZ::TransformBus, GetWorldTM);
-
         if (transform != AZ::Transform::Identity()) {
-            //AZ::Vector3 transformPosition = transform.GetPosition();
-
-            //AZ::Vector3 mouseDiff = (transformPosition - lastMousePosition);
-
-            AZ::Vector3 newPosition = lastMousePosition + AZ::Vector3(0.f, 0.f, .5f);
-
-            transform.SetPosition(newPosition);
-            EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetWorldTM, transform);
+            AZ::Vector3 newPosition = transform.GetPosition().Lerp(lastMousePosition + AZ::Vector3(0.f, 0.f, .5f), 2.f);
         }
+    }
+
+    if (!newPosition.IsZero()) {
+        transform.SetPosition(newPosition);
+        EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetWorldTM, transform);
     }
 }
 

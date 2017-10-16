@@ -2,7 +2,7 @@
 #include "AzCore\Component\Component.h"
 #include <AzCore\Component\TickBus.h>
 #include "Solitaire\MouseHitEventBus.h"
-
+#include "LmbrCentral\Physics\PhysicsComponentBus.h"
 
 namespace Solitaire {
     class CardComponent
