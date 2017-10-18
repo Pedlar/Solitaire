@@ -3,6 +3,8 @@
 #include "AzCore\Serialization\EditContext.h"
 #include "AzCore\Math\Transform.h"
 #include "AzCore\Component\TransformBus.h"
+#include "LmbrCentral\Shape\ShapeComponentBus.h"
+#include "LmbrCentral\Physics\PhysicsSystemComponentBus.h"
 
 using namespace Solitaire;
 
@@ -36,19 +38,39 @@ void CardComponent::Deactivate() {
 
 void CardComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
     AZ::Vector3 newPosition = AZ::Vector3::CreateZero();
-
     AZ::Transform transform = AZ::Transform::Identity();
     EBUS_EVENT_ID_RESULT(transform, GetEntityId(), AZ::TransformBus, GetWorldTM);
 
     if (!lastMousePosition.IsZero()) {
-        if (transform != AZ::Transform::Identity()) {
-            AZ::Vector3 newPosition = transform.GetPosition().Lerp(lastMousePosition + AZ::Vector3(0.f, 0.f, .5f), 2.f);
-        }
-    }
+        newPosition = lastMousePosition;//transform.GetPosition().Lerp(lastMousePosition + AZ::Vector3(0.f, 0.f, .5f), 2.f);
 
-    if (!newPosition.IsZero()) {
-        transform.SetPosition(newPosition);
-        EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetWorldTM, transform);
+        AZ::Aabb aabb = AZ::Aabb::CreateNull();
+        EBUS_EVENT_ID_RESULT(aabb, GetEntityId(), LmbrCentral::ShapeComponentRequestsBus, GetEncompassingAabb);
+
+        AZStd::vector<AZ::EntityId> entities;
+        EBUS_EVENT_RESULT(entities, LmbrCentral::PhysicsSystemRequestBus, GatherPhysicalEntitiesInAABB, aabb, LmbrCentral::PhysicalEntityTypes::All);
+
+        AZ::VectorFloat maxHeight = 0.f;
+
+        for each (AZ::EntityId entityId in entities) {
+            if (entityId == GetEntityId())
+                continue;
+
+            AZ::Transform transform = AZ::Transform::Identity();
+            EBUS_EVENT_ID_RESULT(transform, entityId, AZ::TransformBus, GetWorldTM);
+            if (transform.GetPosition().GetZ() > maxHeight) {
+                maxHeight = transform.GetPosition().GetZ();
+            }
+        }
+
+        if (maxHeight > 0) {
+            newPosition.SetZ(maxHeight + .5f);
+        }
+
+        if (!newPosition.IsZero()) {
+            transform.SetPosition(newPosition);
+            EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetWorldTM, transform);
+        }
     }
 }
 

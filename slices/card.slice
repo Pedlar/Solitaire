@@ -1,9 +1,9 @@
 <ObjectStream version="2">
 	<Class name="AZ::Entity" type="{75651658-8663-478D-9090-2432DFCAFA44}" version="2" specializationTypeId="{75651658-8663-478D-9090-2432DFCAFA44}">
 		<Class name="EntityId" field="Id" type="{6383F1D3-BB27-4E6B-A49A-6409B2059EAA}" version="1" specializationTypeId="{6383F1D3-BB27-4E6B-A49A-6409B2059EAA}">
-			<Class name="AZ::u64" field="id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="222989050389" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+			<Class name="AZ::u64" field="id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="873280988015" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 		</Class>
-		<Class name="AZStd::string" field="Name" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="222989050389" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
+		<Class name="AZStd::string" field="Name" type="{EF8FF807-DDEE-4EB0-B678-4CA3A2C490A4}" value="873280988015" specializationTypeId="{03AAAB3F-5C47-5A66-9EBC-D5FA4DB353C9}"/>
 		<Class name="bool" field="IsDependencyReady" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="false" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
 		<Class name="bool" field="IsRuntimeActive" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
 		<Class name="AZStd::vector" field="Components" type="{2BADE35A-6F1B-4698-B2BC-3373D010020C}" specializationTypeId="{0D23B755-6E8F-5C6C-B7C9-A352A55DC1DF}">
@@ -84,6 +84,18 @@
 										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="11430925610161091937" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="0" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 									</Class>
+									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
+										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="9396876543916187049" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="1" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+									</Class>
+									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
+										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="4227735699065105287" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="2" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+									</Class>
+									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
+										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="4805300315131240003" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="3" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+									</Class>
 								</Class>
 							</Class>
 							<Class name="EditorEntitySortComponent" field="element" type="{6EA1E03D-68B2-466D-97F7-83998C8C27F0}" version="2" specializationTypeId="{6EA1E03D-68B2-466D-97F7-83998C8C27F0}">
@@ -119,6 +131,51 @@
 									</Class>
 								</Class>
 								<Class name="AZStd::vector" field="DisabledComponents" type="{2BADE35A-6F1B-4698-B2BC-3373D010020C}" specializationTypeId="{0D23B755-6E8F-5C6C-B7C9-A352A55DC1DF}"/>
+							</Class>
+							<Class name="EditorBoxShapeComponent" field="element" type="{2ADD9043-48E8-4263-859A-72E0024372BF}" version="1" specializationTypeId="{2ADD9043-48E8-4263-859A-72E0024372BF}">
+								<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
+									<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
+										<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="9396876543916187049" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+									</Class>
+								</Class>
+								<Class name="BoxShapeConfig" field="Configuration" type="{F034FBA2-AC2F-4E66-8152-14DFB90D6283}" version="1" specializationTypeId="{F034FBA2-AC2F-4E66-8152-14DFB90D6283}">
+									<Class name="Vector3" field="Dimensions" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="13.0000000 18.0000000 20.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
+								</Class>
+							</Class>
+							<Class name="EditorRigidPhysicsComponent" field="element" type="{BD17E257-BADB-45D7-A8BA-16D6B0BE0881}" version="1" specializationTypeId="{BD17E257-BADB-45D7-A8BA-16D6B0BE0881}">
+								<Class name="EditorPhysicsComponent" field="BaseClass1" type="{9B5C5303-BDE6-49EA-87EE-9DA9ADD3ECA5}" version="1" specializationTypeId="{9B5C5303-BDE6-49EA-87EE-9DA9ADD3ECA5}">
+									<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
+										<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
+											<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="4227735699065105287" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+										</Class>
+									</Class>
+								</Class>
+								<Class name="EditorRigidPhysicsConfig" field="Configuration" type="{B2FA5441-9B99-5EFA-A606-82752CA23EE8}" version="2" specializationTypeId="{B2FA5441-9B99-5EFA-A606-82752CA23EE8}">
+									<Class name="RigidPhysicsConfig" field="BaseClass1" type="{4D4211C2-4539-444F-A8AC-B0C8417AA579}" version="1" specializationTypeId="{4D4211C2-4539-444F-A8AC-B0C8417AA579}">
+										<Class name="bool" field="EnabledInitially" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
+										<Class name="unsigned int" field="SpecifyMassOrDensity" type="{43DA906B-7DEF-4CA8-9790-854106D3F983}" value="1" specializationTypeId="{43DA906B-7DEF-4CA8-9790-854106D3F983}"/>
+										<Class name="float" field="Mass" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="10.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="float" field="Density" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="500.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="bool" field="AtRestInitially" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="false" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
+										<Class name="bool" field="EnableCollisionResponse" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
+										<Class name="bool" field="InteractsWithTriggers" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
+										<Class name="bool" field="RecordCollisions" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
+										<Class name="int" field="MaxRecordedCollisions" type="{72039442-EB38-4D42-A1AD-CB68F7E0EEF6}" value="10" specializationTypeId="{72039442-EB38-4D42-A1AD-CB68F7E0EEF6}"/>
+										<Class name="float" field="SimulationDamping" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="float" field="SimulationMinEnergy" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0020000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="float" field="BuoyancyDamping" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="float" field="BuoyancyDensity" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="1.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+										<Class name="float" field="BuoyancyResistance" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="1.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
+									</Class>
+								</Class>
+							</Class>
+							<Class name="GenericComponentWrapper" field="element" type="{68D358CA-89B9-4730-8BA6-E181DEA28FDE}" specializationTypeId="{68D358CA-89B9-4730-8BA6-E181DEA28FDE}">
+								<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
+									<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
+										<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="4805300315131240003" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
+									</Class>
+								</Class>
+								<Class name="CardComponent" field="m_template" type="{AF8CC084-B0FD-11E7-ABC4-CEC278B6B50A}" version="1" specializationTypeId="{AF8CC084-B0FD-11E7-ABC4-CEC278B6B50A}"/>
 							</Class>
 						</Class>
 					</Class>
@@ -233,18 +290,6 @@
 										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="10857037889217039987" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="2" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 									</Class>
-									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
-										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="18132555222307648721" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="3" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-									</Class>
-									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
-										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="2160121350979797174" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="4" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-									</Class>
-									<Class name="ComponentOrderEntry" field="element" type="{335C5861-5197-4DD5-A766-EF2B551B0D9D}" version="1" specializationTypeId="{335C5861-5197-4DD5-A766-EF2B551B0D9D}">
-										<Class name="AZ::u64" field="ComponentId" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="3477082603700432789" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-										<Class name="AZ::u64" field="SortIndex" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="5" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-									</Class>
 								</Class>
 							</Class>
 							<Class name="EditorEntitySortComponent" field="element" type="{6EA1E03D-68B2-466D-97F7-83998C8C27F0}" version="2" specializationTypeId="{6EA1E03D-68B2-466D-97F7-83998C8C27F0}">
@@ -284,51 +329,6 @@
 									<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
 										<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="0" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
 									</Class>
-								</Class>
-							</Class>
-							<Class name="GenericComponentWrapper" field="element" type="{68D358CA-89B9-4730-8BA6-E181DEA28FDE}" specializationTypeId="{68D358CA-89B9-4730-8BA6-E181DEA28FDE}">
-								<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
-									<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
-										<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="18132555222307648721" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-									</Class>
-								</Class>
-								<Class name="CardComponent" field="m_template" type="{AF8CC084-B0FD-11E7-ABC4-CEC278B6B50A}" version="1" specializationTypeId="{AF8CC084-B0FD-11E7-ABC4-CEC278B6B50A}"/>
-							</Class>
-							<Class name="EditorRigidPhysicsComponent" field="element" type="{BD17E257-BADB-45D7-A8BA-16D6B0BE0881}" version="1" specializationTypeId="{BD17E257-BADB-45D7-A8BA-16D6B0BE0881}">
-								<Class name="EditorPhysicsComponent" field="BaseClass1" type="{9B5C5303-BDE6-49EA-87EE-9DA9ADD3ECA5}" version="1" specializationTypeId="{9B5C5303-BDE6-49EA-87EE-9DA9ADD3ECA5}">
-									<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
-										<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
-											<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="3477082603700432789" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-										</Class>
-									</Class>
-								</Class>
-								<Class name="EditorRigidPhysicsConfig" field="Configuration" type="{B2FA5441-9B99-5EFA-A606-82752CA23EE8}" version="2" specializationTypeId="{B2FA5441-9B99-5EFA-A606-82752CA23EE8}">
-									<Class name="RigidPhysicsConfig" field="BaseClass1" type="{4D4211C2-4539-444F-A8AC-B0C8417AA579}" version="1" specializationTypeId="{4D4211C2-4539-444F-A8AC-B0C8417AA579}">
-										<Class name="bool" field="EnabledInitially" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
-										<Class name="unsigned int" field="SpecifyMassOrDensity" type="{43DA906B-7DEF-4CA8-9790-854106D3F983}" value="1" specializationTypeId="{43DA906B-7DEF-4CA8-9790-854106D3F983}"/>
-										<Class name="float" field="Mass" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="10.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="float" field="Density" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="500.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="bool" field="AtRestInitially" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="false" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
-										<Class name="bool" field="EnableCollisionResponse" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
-										<Class name="bool" field="InteractsWithTriggers" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
-										<Class name="bool" field="RecordCollisions" type="{A0CA880C-AFE4-43CB-926C-59AC48496112}" value="true" specializationTypeId="{A0CA880C-AFE4-43CB-926C-59AC48496112}"/>
-										<Class name="int" field="MaxRecordedCollisions" type="{72039442-EB38-4D42-A1AD-CB68F7E0EEF6}" value="10" specializationTypeId="{72039442-EB38-4D42-A1AD-CB68F7E0EEF6}"/>
-										<Class name="float" field="SimulationDamping" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="float" field="SimulationMinEnergy" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0020000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="float" field="BuoyancyDamping" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="0.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="float" field="BuoyancyDensity" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="1.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-										<Class name="float" field="BuoyancyResistance" type="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}" value="1.0000000" specializationTypeId="{EA2C3E90-AFBE-44D4-A90D-FAAF79BAF93D}"/>
-									</Class>
-								</Class>
-							</Class>
-							<Class name="EditorBoxShapeComponent" field="element" type="{2ADD9043-48E8-4263-859A-72E0024372BF}" version="1" specializationTypeId="{2ADD9043-48E8-4263-859A-72E0024372BF}">
-								<Class name="EditorComponentBase" field="BaseClass1" type="{D5346BD4-7F20-444E-B370-327ACD03D4A0}" version="1" specializationTypeId="{D5346BD4-7F20-444E-B370-327ACD03D4A0}">
-									<Class name="AZ::Component" field="BaseClass1" type="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}" specializationTypeId="{EDFCB2CF-F75D-43BE-B26B-F35821B29247}">
-										<Class name="AZ::u64" field="Id" type="{D6597933-47CD-4FC8-B911-63F3E2B0993A}" value="2160121350979797174" specializationTypeId="{D6597933-47CD-4FC8-B911-63F3E2B0993A}"/>
-									</Class>
-								</Class>
-								<Class name="BoxShapeConfig" field="Configuration" type="{F034FBA2-AC2F-4E66-8152-14DFB90D6283}" version="1" specializationTypeId="{F034FBA2-AC2F-4E66-8152-14DFB90D6283}">
-									<Class name="Vector3" field="Dimensions" type="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}" value="13.0000000 18.0000000 4.0000000" specializationTypeId="{8379EB7D-01FA-4538-B64B-A6543B4BE73D}"/>
 								</Class>
 							</Class>
 						</Class>

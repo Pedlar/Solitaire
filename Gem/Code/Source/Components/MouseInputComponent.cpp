@@ -132,16 +132,17 @@ void MouseInputComponent::PerformRayCastCheck() {
 
     if (result.GetHitCount() > 0) {
         auto hit = result.GetHit(0);
+        CryLogAlways("HitCount: %d", result.GetHitCount());
         if (hit->IsValid()) {
+            if (ShouldBroadcastHit) {
+                EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEventsBus, OnMouseHit, MouseHitEvents::MouseData(LastClickedMousePosition, hit->m_position));
+            }
+
             if (!ClickedOnEntityId.IsValid()) {
                 ClickedOnEntityId = hit->m_entityId;
             }
 
             LastHitPosition = hit->m_position;
-
-            if (ShouldBroadcastHit) {
-                EBUS_QUEUE_EVENT_ID(hit->m_entityId, MouseHitEventsBus, OnMouseHit, MouseHitEvents::MouseData(LastClickedMousePosition, LastHitPosition));
-            }
         }
     }
 
