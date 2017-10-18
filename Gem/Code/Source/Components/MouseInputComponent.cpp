@@ -119,7 +119,7 @@ void MouseInputComponent::PerformRayCastCheck() {
     LmbrCentral::PhysicsSystemRequests::RayCastConfiguration config;
     config.m_origin = LYVec3ToAZVec3(vPos0);
     config.m_direction = LYVec3ToAZVec3(vDir);
-    config.m_maxHits = 1;
+    config.m_maxHits = 2;
     config.m_maxDistance = maxDistance;
     config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::All;
 
