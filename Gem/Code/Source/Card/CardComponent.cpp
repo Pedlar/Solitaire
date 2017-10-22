@@ -29,6 +29,9 @@ void CardComponent::Init() {
 void CardComponent::Activate() {
     AZ::TickBus::Handler::BusConnect();
     MouseHitEventsBus::Handler::BusConnect(GetEntityId());
+
+    cardAabb = AZ::Aabb::CreateNull();
+    EBUS_EVENT_ID_RESULT(cardAabb, GetEntityId(), LmbrCentral::ShapeComponentRequestsBus, GetEncompassingAabb);
 }
 
 void CardComponent::Deactivate() {
@@ -43,12 +46,22 @@ void CardComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
 
     if (!lastMousePosition.IsZero()) {
         newPosition = lastMousePosition;//transform.GetPosition().Lerp(lastMousePosition + AZ::Vector3(0.f, 0.f, .5f), 2.f);
+    }
 
-        AZ::Aabb aabb = AZ::Aabb::CreateNull();
-        EBUS_EVENT_ID_RESULT(aabb, GetEntityId(), LmbrCentral::ShapeComponentRequestsBus, GetEncompassingAabb);
+    if (!travelToPosition.IsZero()) {
+        newPosition = transform.GetPosition().Lerp(travelToPosition, .05f);
 
+        // Only check X and Y because Z is calculated for us
+        if (newPosition.GetX() == transform.GetPosition().GetX()
+            && newPosition.GetY() == transform.GetPosition().GetY()) {
+            newPosition = AZ::Vector3::CreateZero();
+            travelToPosition = AZ::Vector3::CreateZero();
+        }
+    }
+
+    if(!newPosition.IsZero()) {
         AZStd::vector<AZ::EntityId> entities;
-        EBUS_EVENT_RESULT(entities, LmbrCentral::PhysicsSystemRequestBus, GatherPhysicalEntitiesInAABB, aabb, LmbrCentral::PhysicalEntityTypes::All);
+        EBUS_EVENT_RESULT(entities, LmbrCentral::PhysicsSystemRequestBus, GatherPhysicalEntitiesInAABB, cardAabb, LmbrCentral::PhysicalEntityTypes::All);
 
         AZ::VectorFloat maxHeight = 0.f;
 
@@ -75,7 +88,7 @@ void CardComponent::OnTick(float deltaTime, AZ::ScriptTimePoint time) {
 }
 
 void CardComponent::OnMouseHit(MouseHitEvents::MouseData mouseData) {
-
+    travelToPosition = AZ::Vector3::CreateZero();
 }
 
 
@@ -85,6 +98,20 @@ void CardComponent::OnMouseHeld(MouseHitEvents::MouseData mouseData) {
 
 void CardComponent::OnMouseEnd(MouseHitEvents::MouseData mouseData) {
     lastMousePosition = AZ::Vector3::CreateZero();
+
+    AZStd::vector<AZ::EntityId> entities;
+    EBUS_EVENT_RESULT(entities, LmbrCentral::PhysicsSystemRequestBus, GatherPhysicalEntitiesInAABB, cardAabb, LmbrCentral::PhysicalEntityTypes::All);
+
+    AZ::VectorFloat maxHeight = 0.f;
+
+    for each (AZ::EntityId entityId in entities) {
+        if (entityId == GetEntityId())
+            continue;
+        
+        // TODO: Check if touching a card
+    }
+
+    travelToPosition = AZ::Vector3(101.f, 83.f, 32.1f);
 }
 
 void CardComponent::TrackMouseMovement(AZ::Vector3 position) {

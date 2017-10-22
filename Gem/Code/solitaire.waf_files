@@ -9,19 +9,26 @@
         "Include": [
             "Include/Solitaire/SolitaireBus.h",
 			"Include/Solitaire/MouseHitEventBus.h",
+			"Include/Solitaire/CardComponentRequestBus.h",
 			"Include/Solitaire/CardSpawnerBus.h",
 			"Include/Solitaire/Card/CardTypes.h"
         ],
         "Source": [
             "Source/SolitaireModule.cpp",
             "Source/SolitaireSystemComponent.cpp",
-            "Source/SolitaireSystemComponent.h"
+            "Source/SolitaireSystemComponent.h",
+		    "Source/CardPoint/CardPointFramework.cpp",
+			"Source/CardPoint/CardPointFramework.h"
         ],
 		"Source/Card": [
 		    "Source/Card/CardModel.cpp",
 			"Source/Card/CardModel.h",
 			"Source/Card/CardComponent.cpp",
 			"Source/Card/CardComponent.h"
+		],
+		"Source/CardPoint": [
+		    "Source/CardPoint/CardPoint.cpp",
+			"Source/CardPoint/CardPoint.h"
 		],
 		"Source/Deck": [
 		    "Source/Deck/DeckFramework.cpp",

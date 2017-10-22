@@ -121,7 +121,8 @@ void MouseInputComponent::PerformRayCastCheck() {
     config.m_direction = LYVec3ToAZVec3(vDir);
     config.m_maxHits = 2;
     config.m_maxDistance = maxDistance;
-    config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::All;
+    config.m_physicalEntityTypes = LmbrCentral::PhysicalEntityTypes::Dynamic | LmbrCentral::PhysicalEntityTypes::Independent
+        | LmbrCentral::PhysicalEntityTypes::Living | LmbrCentral::PhysicalEntityTypes::Static;
 
     if (ClickedOnEntityId.IsValid()) {
         config.m_ignoreEntityIds = AZStd::initializer_list<AZ::EntityId>({ ClickedOnEntityId });

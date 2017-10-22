@@ -34,6 +34,7 @@ namespace Solitaire {
         AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator> ticketCardMap = AZStd::map<AzFramework::SliceInstantiationTicket, Card, AZStd::less<AzFramework::SliceInstantiationTicket>, AZStd::allocator>();
     
         void SetSubMtlOfCard(const AZ::SliceComponent::EntityList & entites, Card card);
+        void SetCardOnCardComponent(AZ::Entity*, Card);
         void SetSubMtlOfEntityForCard(AZ::Entity *, Card card);
         int GetMtlPosition(Card card);
         AZ::Transform GetSpawnTransform();

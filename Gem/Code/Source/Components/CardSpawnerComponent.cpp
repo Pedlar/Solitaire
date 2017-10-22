@@ -12,6 +12,7 @@
 #include <LmbrCentral\Rendering\MaterialOwnerBus.h>
 #include <AzCore\Asset\AssetManagerBus.h>
 #include <LmbrCentral\Physics\PhysicsSystemComponentBus.h>
+#include "Solitaire\CardComponentRequestBus.h"
 
 using namespace Solitaire;
 
@@ -88,8 +89,15 @@ void CardSpawnerComponent::SetSubMtlOfCard(const AZ::SliceComponent::EntityList&
         if ("CardModel" == currEntity->GetName()) {
             CryLogAlways("CardModel Entity!");
             SetSubMtlOfEntityForCard(currEntity, card);
+            SetCardOnCardComponent(currEntity, card);
         }
     }
+}
+
+void CardSpawnerComponent::SetCardOnCardComponent(AZ::Entity* entity, Card card) {
+    AZ::EntityId entityId = entity->GetId();
+
+    EBUS_EVENT_ID(entityId, CardComponenetRequesttBus, SetCard, card);
 }
 
 void CardSpawnerComponent::SetSubMtlOfEntityForCard(AZ::Entity* entity, Card card) {
